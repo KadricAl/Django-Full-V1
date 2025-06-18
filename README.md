@@ -20,18 +20,20 @@ A full-stack Django application for monitoring service and installation requests
 - **PDF:** WeasyPrint
 - **Others:** Django Auth, File Upload, Email, .env support
 
-project/
-├── home/ # Home pages and login logic
-├── customer/ # Customer-facing logic and dashboard
-├── technician/ # Technician dashboard
-├── devices/ # Devices/Products models and views
-├── installed_devices/ # Installed_devices models and views
-├── service/ # Service model logic
-├── templates/
-├── static/
-├── media/
-├── requirements.txt
-└── README.md
+## Project
+
+home/ # Home pages and login logic
+contact/ # Contact page logic and view
+customer/ # Customer-facing logic and dashboard
+technician/ # Technician dashboard
+devices/ # Devices/Products models and views
+installed_devices/ # Installed_devices models and views
+service/ # Service model logic
+templates/
+static/
+media/
+requirements.txt
+README.md
 
 ## 🗂 Setup
 
