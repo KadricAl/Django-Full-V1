@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Finished Services{% endblock %}
+
+{% block content %}
+<div class="flex min-h-screen">
+    {% include "left_menu.html" %}
+
+    <main class="flex-1 p-6 bg-gray-100">
+        <div class="p-6 bg-white shadow rounded">
+            <h1 class="text-2xl font-bold mb-4">Finished Services</h1>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border rounded shadow bg-white">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="p-3 border">Finish Date</th>
+                            <th class="p-3 border">Serial</th>
+                            <th class="p-3 border">Device Type</th>
+                            <th class="p-3 border">Client</th>
+                            <th class="p-3 border">Tech Description</th>
+                            <th class="p-3 border">Price</th>
+                            <th class="p-3 border">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for service in services %}
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-3 border">{{ service.finish_date }}</td>
+                            <td class="p-3 border">{{ service.installed_device.serial_number }}</td>
+                            <td class="p-3 border">{{ service.installed_device.device.type }}</td>
+                            <td class="p-3 border">{{ service.installed_device.client.name }}</td>
+                            <td class="p-3 border">{{ service.tech_description }}</td>
+                            <td class="p-3 border">{{ service.price }}</td>
+                            <td class="p-3 border">
+                                <a href="{% url 'technician_edit_finished_service' service.id %}" class="text-blue-600 hover:underline mr-2">Edit</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="7" class="text-center p-4">No finished services found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}

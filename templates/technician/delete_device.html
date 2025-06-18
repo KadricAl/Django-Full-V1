@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Delete Device{% endblock %}
+
+{% block content %}
+<div class="flex min-h-screen">
+    {% include "left_menu.html" %}
+
+    <main class="flex-1 p-6 bg-gray-100">
+        <div class="bg-white p-6 shadow rounded max-w-lg mx-auto">
+            <h1 class="text-2xl font-bold text-red-600 mb-4">Confirm Deletion</h1>
+            <p class="mb-6 text-gray-700">
+                Are you sure you want to delete the following installed device?
+            </p>
+
+            <ul class="mb-6 text-gray-800">
+                <li><strong>Serial:</strong> {{ device.serial_number }}</li>
+                <li><strong>Device Type:</strong> {{ device.device.type }}</li>
+                <li><strong>Client:</strong> {{ device.client.name }}</li>
+                <li><strong>Installation Date:</strong> {{ device.installation_date }}</li>
+            </ul>
+
+            <form method="POST" class="flex gap-4">
+                {% csrf_token %}
+                <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">
+                    Yes, Delete
+                </button>
+                <a href="{% url 'technician_all_devices' %}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded">
+                    Cancel
+                </a>
+            </form>
+        </div>
+    </main>
+</div>
+{% endblock %}

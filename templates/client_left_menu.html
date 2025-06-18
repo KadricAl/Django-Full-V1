@@ -1,0 +1,12 @@
+<aside class="w-1/5 bg-[#0056B3] text-white p-6">
+    <h2 class="text-xl font-semibold mb-4">Client Menu</h2>
+    <ul class="space-y-2">
+        <li><a href="{% url 'client_dashboard' %}" class="block py-2 hover:bg-blue-700 rounded px-2">Dashboard</a></li>
+        <li><a href="{% url 'client_my_devices' %}" class="block py-2 hover:bg-blue-700 rounded px-2">My Devices</a></li>
+        <li><a href="{% url 'client_shops' %}" class="block py-2 hover:bg-blue-700 rounded px-2">Shops</a></li>
+        <li><a href="{% url 'client_service_history' %}" class="block py-2 hover:bg-blue-700 rounded px-2">Service History</a></li>
+        <li><a href="{% url 'client_requested_services' %}" class="block py-2 hover:bg-blue-700 rounded px-2">Requested Services</a></li>
+        <li><a href="{% url 'client_next_services' %}" class="block py-2 hover:bg-blue-700 rounded px-2">Next Services</a></li>
+
+    </ul>
+</aside>

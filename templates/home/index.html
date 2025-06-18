@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home page - POS Monitoring{% endblock %}
+
+
+    {% block content %}
+    <section class="py-16 bg-white mt-16">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold text-[#007BFF] mb-8">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                <!-- Service 1 -->
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <img src="{% static 'images/service1.jpg' %}" alt="Selling & Installation" class="w-full h-[250px] object-cover rounded">
+                    <h3 class="text-xl font-semibold mt-4">Selling Product & Installation</h3>
+                    <p class="text-gray-600 mt-2">We provide top-quality POS printers and professional installation services.</p>
+                    <a href="#" class="inline-block mt-4 bg-[#007BFF] text-white px-4 py-2 rounded hover:bg-[#0056B3] transition duration-300">
+                        Learn More
+                    </a>
+                </div>
+    
+                <!-- Service 2 -->
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <img src="{% static 'images/service2.jpg' %}" alt="Repair Device Service" class="w-full h-[250px] object-cover rounded">
+                    <h3 class="text-xl font-semibold mt-4">Repair Device Service</h3>
+                    <p class="text-gray-600 mt-2">Expert repair services to keep your devices running smoothly.</p>
+                    <a href="#" class="inline-block mt-4 bg-[#007BFF] text-white px-4 py-2 rounded hover:bg-[#0056B3] transition duration-300">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container mx-auto px-6 py-12">
+        <h2 class="text-3xl font-bold text-center text-[#007BFF] mb-8">Bestseller Products</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Product 1 -->
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden p-4">
+                <img src="{% static 'images/product1.jpeg' %}" alt="Product 1" class="w-full h-[300px] object-cover rounded">
+                <h3 class="text-xl font-semibold text-gray-800 mt-4">POS Printer Model X</h3>
+                <p class="text-gray-600 mt-2">High-speed thermal printer perfect for retail and restaurants.</p>
+                <a href="#" class="mt-4 inline-block bg-[#007BFF] text-white py-2 px-4 rounded hover:bg-[#0056B3] transition duration-300">Show More</a>
+            </div>
+    
+            <!-- Product 2 -->
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden p-4">
+                <img src="{% static 'images/product2.jpeg' %}" alt="Product 2" class="w-full h-[300px] object-cover rounded">
+                <h3 class="text-xl font-semibold text-gray-800 mt-4">POS Printer Model Y</h3>
+                <p class="text-gray-600 mt-2">Reliable, high-quality prints with low power consumption.</p>
+                <a href="#" class="mt-4 inline-block bg-[#007BFF] text-white py-2 px-4 rounded hover:bg-[#0056B3] transition duration-300">Show More</a>
+            </div>
+    
+            <!-- Product 3 -->
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden p-4">
+                <img src="{% static 'images/product3.jpeg' %}" alt="Product 3" class="w-full h-[300px] object-cover rounded">
+                <h3 class="text-xl font-semibold text-gray-800 mt-4">POS Printer Model Z</h3>
+                <p class="text-gray-600 mt-2">Compact and durable, with Bluetooth and USB connectivity.</p>
+                <a href="#" class="mt-4 inline-block bg-[#007BFF] text-white py-2 px-4 rounded hover:bg-[#0056B3] transition duration-300">Show More</a>
+            </div>
+        </div>
+    </section>
+   
+    <section class="container mx-auto px-6 py-12">
+        <h2 class="text-3xl font-bold text-center text-[#007BFF] mb-8">Meet Our Team</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Team Member 1 -->
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden p-4 text-center transition-transform transform hover:scale-105 hover:shadow-xl">
+                <img src="{% static 'images/team1.jpeg' %}" alt="Team Member 1" class="w-40 h-40 mx-auto rounded-full object-cover">
+                <h3 class="text-xl font-semibold text-gray-800 mt-4">John Doe</h3>
+                <p class="text-gray-600">Senior Technician</p>
+                <ul class="text-gray-500 mt-2 text-sm">
+                    <li>✔ 10+ years of repair experience</li>
+                    <li>✔ Certified POS Specialist</li>
+                    <li>✔ Expert in thermal printers</li>
+                </ul>
+                <div class="mt-4 flex justify-center space-x-4">
+                    <a href="#" class="text-[#FF0000] text-xl"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="text-[#E1306C] text-xl"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-[#0A66C2] text-base">view LinkedIn profile<i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+    
+            <!-- Team Member 2 -->
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden p-4 text-center transition-transform transform hover:scale-105 hover:shadow-xl">
+                <img src="{% static 'images/team2.jpeg' %}" alt="Team Member 2" class="w-40 h-40 mx-auto rounded-full object-cover">
+                <h3 class="text-xl font-semibold text-gray-800 mt-4">Jane Smith</h3>
+                <p class="text-gray-600">Customer Support Lead</p>
+                <ul class="text-gray-500 mt-2 text-sm">
+                    <li>✔ 8+ years in customer service</li>
+                    <li>✔ Expert in POS troubleshooting</li>
+                    <li>✔ Multilingual support</li>
+                </ul>
+                <div class="mt-4 flex justify-center space-x-4">
+                    <a href="#" class="text-[#1DA1F2] text-xl"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-[#E1306C] text-xl"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-[#0A66C2] text-base">view LinkedIn profile<i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+    
+            <!-- Team Member 3 -->
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden p-4 text-center transition-transform transform hover:scale-105 hover:shadow-xl">
+                <img src="{% static 'images/team3.jpeg' %}" alt="Team Member 3" class="w-40 h-40 mx-auto rounded-full object-cover">
+                <h3 class="text-xl font-semibold text-gray-800 mt-4">Mark Lee</h3>
+                <p class="text-gray-600">Sales Manager</p>
+                <ul class="text-gray-500 mt-2 text-sm">
+                    <li>✔ 5+ years in POS sales</li>
+                    <li>✔ B2B & B2C sales expert</li>
+                    <li>✔ Strategic partnerships</li>
+                </ul>
+                <div class="mt-4 flex justify-center space-x-4">
+                    <a href="#" class="text-[#FF0000] text-xl"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="text-[#25D366] text-xl"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="text-[#0A66C2] text-base">view LinkedIn profile<i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+    

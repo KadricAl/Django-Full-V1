@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}POS Monitoring{% endblock %}</title>
+    <link href="{% static 'css/dist/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+<body class="bg-[#F0F8FF] text-[#333333]">
+
+    <!-- Header -->
+    <header class="bg-[#007BFF] text-white py-4 px-6 fixed w-full top-0 shadow-md z-72">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
+             <div class="flex justify-start gap-4">
+            <a href="{% url 'home' %}" class="text-xl font-bold">
+                <img src="{% static 'images/logo.jpg' %}" alt="Logo" class="h-[72px] w-auto">
+            </a>
+
+            <h1 class="text-xl font-bold mt-6">POS Monitoring</h1>
+
+            </div>
+            <!-- Navigation -->
+            <nav>
+                <ul class="flex space-x-6">
+                    <li>
+                        <a href="{% url 'about' %}" class="hover:bg-[#0056B3] py-2 px-4 rounded transition duration-300">About Us</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'contact' %}" class="hover:bg-[#0056B3] py-2 px-4 rounded transition duration-300">Contact</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'product_list' %}" class="hover:bg-[#0056B3] py-2 px-4 rounded transition duration-300">Products</a>
+                    </li>
+                    <li>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'logout' %}">Logout</a>
+                        {% else %}
+                            <a href="{% url 'login_page' %}">Login</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    {% if messages %}
+        <div class="fixed top-4 right-4 z-50 space-y-2">
+        {% for message in messages %}
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded shadow">
+                {{ message }}
+            </div>
+        {% endfor %}
+        </div>
+                <script>
+                    // Auto-close the message after 3 seconds
+                    setTimeout(() => {
+                        const alerts = document.querySelectorAll('.fixed div');
+                        alerts.forEach(alert => alert.remove());
+                    }, 3000);
+                </script>
+    {% endif %}
+
+    <!-- Page Content -->
+    <main class="mt-[160px] container mx-auto p-6">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#007BFF] text-white py-8 mt-12">
+        <div class="container mx-auto p-6 grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
+            <!-- Contact Details -->
+            <div>
+                <h3 class="text-lg font-semibold">Contact Us</h3>
+                <p class="mt-2">📍 123 POS Street, Tech City</p>
+                <p>📞 +123 456 7890</p>
+                <p>📧 support@posmonitoring.com</p>
+            </div>
+    
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold">Quick Links</h3>
+                <ul class="mt-2 space-y-2">
+                    <li><a href="{% url 'about' %}" class="hover:text-[#F0F8FF]">About Us</a></li>
+                    <li><a href="{% url 'contact' %}" class="hover:text-[#F0F8FF]">Contact</a></li>
+                    <li><a href="{% url 'login_page' %}" class="hover:text-[#F0F8FF]">Products</a></li>
+                </ul>
+            </div>
+    
+            <!-- Action Buttons -->
+            <div>
+                <h3 class="text-lg font-semibold">Need Help?</h3>
+                <div class="mt-4 space-y-2">
+                    <a href="{% url 'contact' %}" class="block bg-[#00A3E0] hover:bg-[#0056B3] text-white py-2 px-4 rounded transition duration-300">
+                        Request Product Offer
+                    </a>
+                    <a href="{% url 'contact' %}" class="block bg-[#00A3E0] hover:bg-[#0056B3] text-white py-2 px-4 rounded transition duration-300">
+                        Request Service
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Text -->
+        <div class="text-center mt-6 border-t border-white/20 pt-4">
+            <p>&copy; 2025 POS Monitoring. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

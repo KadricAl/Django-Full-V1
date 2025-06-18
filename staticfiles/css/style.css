@@ -1,0 +1,15 @@
+.img-file-pick::file-selector-button {
+  border: 1px solid darkgray;
+  padding: 10px;
+  border-radius: 6px 0 0 6px;
+  background-color: black;
+  color: white;
+  width: 50%;
+  transition: 0.5s;
+}
+
+.img-file-pick::file-selector-button:hover {
+  background-color: gray;
+  border: 1px solid gray;
+}
+

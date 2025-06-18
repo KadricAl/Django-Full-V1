@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Edit Service{% endblock %}
+
+{% block content %}
+<div class="flex min-h-screen">
+    {% include "left_menu.html" %}
+
+    <main class="flex-1 p-6 bg-gray-100">
+        <div class="bg-white p-6 rounded shadow">
+            <h1 class="text-2xl font-bold mb-4">Edit Service - {{ service.service_type }}</h1>
+
+            <form method="POST" class="space-y-4">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <button type="submit" class="bg-[#007BFF] hover:bg-[#0056B3] text-white px-4 py-2 rounded">
+                    Save Changes
+                </button>
+            </form>
+        </div>
+    </main>
+</div>
+{% endblock %}

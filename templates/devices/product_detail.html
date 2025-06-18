@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ device.type }} Details{% endblock %}
+
+{% block content %}
+<div class="container mx-auto py-16 px-4">
+    <div class="max-w-3xl mx-auto bg-white shadow-lg p-6 rounded-lg">
+        <img src="{{ device.picture.url }}" alt="{{ device.type }}" class="w-full h-80 object-cover rounded">
+        <h2 class="text-2xl font-bold text-[#0056B3] mt-4">{{ device.type }}</h2>
+        <p class="text-gray-700 mt-2">{{ device.description }}</p>
+        <p class="text-lg text-gray-800 mt-4 font-semibold">Price: ${{ device.price }}</p>
+    </div>
+</div>
+{% endblock %}

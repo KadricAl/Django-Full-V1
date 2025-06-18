@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Edit Client{% endblock %}
+
+{% block content %}
+<div class="flex min-h-screen">
+    <!-- Sidebar -->
+    {% include "left_menu.html" %}
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 bg-gray-100">
+        <div class="bg-white p-6 rounded shadow">
+            <h1 class="text-2xl font-bold mb-4">Edit Client - {{ client.name }}</h1>
+
+            <form method="POST" class="space-y-4">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+                <div class="flex flex-wrap gap-4">
+                    <!-- Save Button -->
+                    <button type="submit" class="bg-[#007BFF] hover:bg-[#0056B3] text-white px-4 py-2 rounded">
+                    Save Changes
+                    </button>
+
+                    <!-- Create Shop Button -->
+                    <a href="{% url 'create_shop' client.id %}" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">
+                    Create Shop
+                    </a>
+
+                    <!-- Register Client Button -->
+                    <a href="{% url 'register_client' client.id %}" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded">
+                    Register Client
+                    </a>
+                    <a href="{% url 'technician_clients' %}" class="ml-4 px-4 py-2 text-gray-600 hover:underline">Cancel</a>
+                </div>
+            </form>
+
+        </div>
+    </main>
+</div>
+{% endblock %}

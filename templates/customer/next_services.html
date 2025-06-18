@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Client - Next Services{% endblock %}
+
+{% block content %}
+<div class="flex min-h-screen">
+    {% include "client_left_menu.html" %}
+    <main class="flex-1 p-6 bg-gray-100">
+        <div class="p-6">
+            <h1 class="text-2xl font-bold mb-4">Upcoming Yearly Services</h1>
+
+            {% if due_devices %}
+            <div class="overflow-x-auto">
+                 <a href="{% url 'client_next_services_pdf' %}" target="_blank"
+                    class="mb-4 inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+                    Download PDF
+                </a>
+                <table class="w-full text-left border rounded shadow bg-white">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="p-3 border">Due Date</th>
+                            <th class="p-3 border">Installation Date</th>
+                            <th class="p-3 border">Serial Number</th>
+                            <th class="p-3 border">Device Type</th>
+                            <th class="p-3 border">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in due_devices %}
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-3 border">{{ item.due_date|date:"Y-m-d" }}</td>
+                            <td class="p-3 border">{{ item.device.installation_date|date:"Y-m-d" }}</td>
+                            <td class="p-3 border">{{ item.device.serial_number }}</td>
+                            <td class="p-3 border">{{ item.device.device.type }}</td>
+                            <td class="p-3 border">{{ item.device.status }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p class="text-gray-600">No upcoming yearly services at this time.</p>
+            {% endif %}
+        </div>
+    </main>
+</div>
+{% endblock %}

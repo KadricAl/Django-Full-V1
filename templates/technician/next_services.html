@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Upcoming Yearly Services{% endblock %}
+
+{% block content %}
+<div class="flex min-h-screen">
+    {% include "left_menu.html" %}
+
+    <main class="flex-1 p-6 bg-gray-100">
+        <div class="bg-white p-6 shadow rounded">
+            <h1 class="text-2xl font-bold mb-4">Upcoming Yearly Services</h1>
+            <table class="w-full bg-white border">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="p-3 border">Serial</th>
+                        <th class="p-3 border">Client</th>
+                        <th class="p-3 border">Installation Date</th>
+                        <th class="p-3 border">Service Due</th>
+                        <th class="p-3 border">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in due_devices %}
+                    <tr class="hover:bg-gray-50">
+                        <td class="p-3 border">{{ item.device.serial_number }}</td>
+                        <td class="p-3 border">{{ item.device.client.name }}</td>
+                        <td class="p-3 border">{{ item.device.installation_date }}</td>
+                        <td class="p-3 border">{{ item.due_date }}</td>
+                        <td class="p-3 border">
+                            <a href="{% url 'technician_mark_service_completed' item.device.id %}" class="text-green-600 hover:underline">Completed</a>
+                            |
+                            <a href="{% url 'technician_cancel_service' item.device.id %}" class="text-red-600 hover:underline">Cancel</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="p-4 text-center">No upcoming services found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+{% endblock %}

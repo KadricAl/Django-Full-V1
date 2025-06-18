@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Edit Product{% endblock %}
+
+{% block content %}
+<div class="flex min-h-screen">
+    <!-- Sidebar -->
+    {% include "left_menu.html" %}
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 bg-gray-100">
+        <div class="bg-white p-6 rounded shadow">
+            <h1 class="text-2xl font-bold mb-4">Edit Product - {{ device.serial_number }}</h1>
+
+            <form method="post" enctype="multipart/form-data" class="space-y-4">
+            
+                {% csrf_token %}
+            
+                {{ form.as_p }}
+            
+                <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Update</button>
+            
+                <a href="{% url 'technician_products' %}" class="text-gray-600 ml-4">Cancel</a>
+        </form>
+
+        </div>
+    </main>
+</div>
+{% endblock %}

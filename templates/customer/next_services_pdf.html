@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: sans-serif; }
+        h1 { text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #333; padding: 8px; font-size: 14px; }
+        th { background-color: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h1>Upcoming Yearly Services</h1>
+    <p>Client: {{ customer.name }}</p>
+    <p>Generated on: {{ generated_on }}</p>
+
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Due Date</th>
+                <th>Installation Date</th>
+                <th>Serial Number</th>
+                <th>Device Type</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in due_devices %}
+            <tr>
+                <td>{{ item.due_date|date:"Y-m-d" }}</td>
+                <td>{{ item.device.installation_date|date:"Y-m-d" }}</td>
+                <td>{{ item.device.serial_number }}</td>
+                <td>{{ item.device.device.type }}</td>
+                <td>{{ item.device.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

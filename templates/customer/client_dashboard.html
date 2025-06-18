@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Client Dashboard{% endblock %}
+
+
+{% block content %}
+<div class="flex min-h-screen">
+    <!-- Sidebar -->
+    {% include "client_left_menu.html" %}
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 bg-gray-100">
+        <h1 class="text-2xl font-bold mb-4">Welcome, {{ request.user.username }}</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white shadow rounded-lg p-4">
+                <h3 class="text-lg font-semibold text-gray-700">My Devices</h3>
+                <p class="text-2xl font-bold text-blue-600">{{ total_devices }}</p>
+            </div>
+            <div class="bg-white shadow rounded-lg p-4">
+                <h3 class="text-lg font-semibold text-gray-700">My Shops</h3>
+                <p class="text-2xl font-bold text-blue-600">{{ total_shops }}</p>
+            </div>
+            <div class="bg-white shadow rounded-lg p-4">
+                <h3 class="text-lg font-semibold text-gray-700">Upcoming services</h3>
+                <p class="text-2xl font-bold text-blue-600">{{ yearly_services }}</p>
+            </div>
+            <div class="bg-white shadow rounded-lg p-4">
+                <h3 class="text-lg font-semibold text-gray-700">Awaiting Services</h3>
+                <p class="text-2xl font-bold text-blue-600">{{ requested_services }}</p>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}

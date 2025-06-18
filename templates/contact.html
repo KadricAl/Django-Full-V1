@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mx-auto p-6">
+    <!-- Contact Info & Map -->
+    <div class="bg-white shadow-lg rounded-lg p-6">
+        <h2 class="text-2xl font-bold text-blue-600">Contact Information</h2>
+        <p>Email: yourbusiness@example.com</p>
+        <p>Phone: +123456789</p>
+
+        <!-- Google Maps Embed -->
+        <div class="mt-4">
+            <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509766!2d144.95373631531598!3d-37.8162797420217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675218ce6e0!2sMelbourne%20VIC!5e0!3m2!1sen!2sus!4v1643239599146!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+            </iframe>
+        </div>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="flex space-x-4 mt-6">
+        <a href="#" class="text-blue-500"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="text-pink-500"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="text-blue-700"><i class="fab fa-linkedin"></i></a>
+    </div>
+
+    <!-- Contact Form -->
+    <form method="POST" class="bg-white shadow-lg rounded-lg p-6 mt-6">
+        <h2 class="text-xl font-bold">Send a Message</h2>
+        {% csrf_token %}
+        {{ contact_form.as_p }}
+        <button type="submit" name="contact_submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+    </form>
+
+    <!-- Request Offer/Service Form -->
+    <form method="POST" class="bg-white shadow-lg rounded-lg p-6 mt-6">
+        <h2 class="text-xl font-bold">Request Offer/Service</h2>
+        {% csrf_token %}
+        {{ request_form.as_p }}
+        <button type="submit" name="request_submit" class="bg-green-500 text-white px-4 py-2 rounded">Submit</button>
+    </form>
+</div>
+
+<!-- Floating Success Message -->
+{% if messages %}
+<div id="success-message" class="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded shadow-lg">
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+    <button onclick="document.getElementById('success-message').style.display='none'">X</button>
+</div>
+
+<script>
+    setTimeout(function() {
+        document.getElementById("success-message").style.display = "none";
+    }, 3000);
+</script>
+{% endif %}
+{% endblock %}

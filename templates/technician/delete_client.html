@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Delete Client{% endblock %}
+
+{% block content %}
+<div class="flex min-h-screen">
+    <!-- Sidebar -->
+    {% include "left_menu.html" %}
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 bg-gray-100">
+        <div class="bg-white p-6 rounded shadow">
+            <h1 class="text-2xl font-bold mb-4">Delete Client</h1>
+            <p>Are you sure you want to delete <strong>{{ client.name }}</strong>?</p>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mt-4">
+                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">
+                        Confirm Delete
+                    </button>
+                    <a href="{% url 'technician_clients' %}" class="ml-4 text-blue-600 hover:underline">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </main>
+</div>
+{% endblock %}

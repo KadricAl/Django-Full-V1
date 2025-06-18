@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+
+    <!-- Search Form -->
+    <form method="get" action="" class="mb-8 text-center">
+        <input type="text" name="search" placeholder="Search products..."
+               value="{{ search|default:'' }}"
+               class="w-full max-w-md px-4 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-[#007BFF]">
+    </form>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {% for device in page_obj %}
+        <div class="bg-white shadow-md rounded-lg p-4">
+            {% if device.picture %}
+                <img src="{{ device.picture.url }}" alt="Device Image" class="w-full h-48 object-cover rounded">
+            {% else %}
+                <div class="w-full h-48 flex items-center justify-center bg-gray-200 rounded text-gray-500">
+                    No Image
+        </div>
+            {% endif %}
+            <h3 class="text-lg font-bold text-[#007BFF]">{{ device.type }}</h3>
+            <p class="text-sm text-gray-700 mt-2">{{ device.description|truncatechars:100 }}</p>
+            <a href="{% url 'product_detail' device.pk %}"
+               class="inline-block mt-4 bg-[#007BFF] hover:bg-[#0056B3] text-white text-sm font-semibold py-2 px-4 rounded transition duration-300">
+                Show More
+            </a>
+        </div>
+        {% empty %}
+        <p class="text-center col-span-full text-gray-500">No devices found.</p>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    {% if page_obj.has_other_pages %}
+    <div class="mt-8 flex justify-center space-x-2 text-sm">
+        {% if page_obj.has_previous %}
+        <a href="?page=1{% if search %}&search={{ search }}{% endif %}"
+           class="px-3 py-1 border rounded hover:bg-gray-200">First</a>
+        <a href="?page={{ page_obj.previous_page_number }}{% if search %}&search={{ search }}{% endif %}"
+           class="px-3 py-1 border rounded hover:bg-gray-200">Previous</a>
+        {% endif %}
+
+        <span class="px-3 py-1 border bg-gray-200 rounded">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}{% if search %}&search={{ search }}{% endif %}"
+           class="px-3 py-1 border rounded hover:bg-gray-200">Next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}{% if search %}&search={{ search }}{% endif %}"
+           class="px-3 py-1 border rounded hover:bg-gray-200">Last</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

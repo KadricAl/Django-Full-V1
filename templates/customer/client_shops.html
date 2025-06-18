@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Client - Shops{% endblock %}
+
+{% block content %}
+<div class="flex min-h-screen">
+    <!-- Sidebar -->
+    {% include "client_left_menu.html" %}
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 bg-gray-100">
+        <div class="p-6">
+            <h1 class="text-2xl font-bold mb-4">My Shops</h1>
+
+            <!-- New Shop Button -->
+            <a href="{% url 'client_new_shop' %}" class="mb-4 inline-block bg-[#007BFF] text-white px-4 py-2 rounded hover:bg-[#0056B3]">New Shop</a>
+
+            <!-- Shops Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border rounded shadow bg-white">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="p-3 border">Shop Name</th>
+                            <th class="p-3 border">Address</th>
+                            <th class="p-3 border">Phone</th>
+                            <th class="p-3 border">Email</th>
+                            <th class="p-3 border">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for shop in shops %}
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-3 border">{{ shop.name }}</td>
+                            <td class="p-3 border">{{ shop.address }}</td>
+                            <td class="p-3 border">{{ shop.phone }}</td>
+                            <td class="p-3 border">{{ shop.email }}</td>
+                            <td class="p-3 border">
+                                <a href="{% url 'client_edit_shop' shop.id %}" class="text-blue-600 hover:underline">Edit</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr><td colspan="5" class="text-center p-4">No shops found.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}

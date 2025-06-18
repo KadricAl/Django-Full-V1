@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Manage Clients{% endblock %}
+
+{% block content %}
+<div class="flex min-h-screen">
+    <!-- Sidebar -->
+    {% include "left_menu.html" %}
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 bg-gray-100">
+        <div class="p-6">
+            <h1 class="text-2xl font-bold mb-4">Manage Clients</h1>
+            
+            <!-- Add Client Button -->
+            <a href="{% url 'technician_add_client' %}" class="mb-4 inline-block bg-[#007BFF] text-white px-4 py-2 rounded hover:bg-[#0056B3]">Add New Client</a>
+
+            <!-- Search Form -->
+            <form method="GET" class="mb-4 flex items-center">
+                <input type="text" name="search" value="{{ search_query }}" placeholder="Search Clients..." class="border rounded-l px-4 py-2 w-1/3">
+                <button type="submit" class="bg-[#007BFF] text-white px-4 py-2 rounded-r hover:bg-[#0056B3]">Search</button>
+            </form>
+
+            <!-- Clients Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border rounded shadow bg-white">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="p-3 border">Name</th>
+                            <th class="p-3 border">Email</th>
+                            <th class="p-3 border">Phone</th>
+                            <th class="p-3 border">Shops</th>
+                            <th class="p-3 border">Address</th>
+                            <th class="p-3 border">Active Devices</th>
+                            <th class="p-3 border">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in clients %}
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-3 border">{{ data.client.name }}</td>
+                            <td class="p-3 border">{{ data.client.email }}</td>
+                            <td class="p-3 border">{{ data.client.phone }}</td>
+                            <td class="p-3 border">{{ data.client.shop_set.count }}</td>
+                            <td class="p-3 border">{{ data.client.address }}</td>
+                            <td class="p-3 border">{{ data.active_devices_count }}</td>
+                            <td class="p-3 border">
+                                <a href="{% url 'technician_edit_client' data.client.id %}" class="text-blue-600 hover:underline mr-2">Edit</a>
+                                <a href="{% url 'technician_delete_client' data.client.id %}" class="text-red-600 hover:underline">Delete</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr><td colspan="7" class="text-center p-4">No clients found.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}

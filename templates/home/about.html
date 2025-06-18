@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}About Us - POS Monitoring{% endblock %}
+
+{% block content %}
+    <section class="text-center py-12">
+        <h1 class="text-4xl font-bold text-[#007BFF]">About Us</h1>
+        <p class="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
+            Welcome to POS Monitoring, your trusted service for **POS printer installation, maintenance, and repairs**.  
+            We ensure that your business runs smoothly with **reliable support** and **quality service**.
+        </p>
+    </section>
+
+    <!-- Our Mission -->
+    <section class="bg-white shadow-lg rounded-lg p-6 max-w-4xl mx-auto my-12">
+        <h2 class="text-2xl font-bold text-[#0056B3]">Our Mission</h2>
+        <p class="mt-2 text-gray-700">
+            Our mission is to provide **fast, efficient, and affordable** POS repair and maintenance services.  
+            We help businesses minimize downtime by ensuring their **POS systems run flawlessly**.
+        </p>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="bg-gray-100 shadow-lg rounded-lg p-6 max-w-4xl mx-auto my-12">
+        <h2 class="text-2xl font-bold text-[#0056B3]">Why Choose Us?</h2>
+        <ul class="mt-4 text-gray-700 space-y-3">
+            <li>✅ **Experienced Technicians** - Over 10 years in the industry.</li>
+            <li>✅ **Fast Service** - Quick turnaround for repairs and installations.</li>
+            <li>✅ **Affordable Pricing** - Competitive rates with no hidden costs.</li>
+            <li>✅ **Reliable Support** - Available when you need us most.</li>
+        </ul>
+    </section>
+
+    <!-- Our Team -->
+    <section class="py-12">
+        <h2 class="text-3xl font-bold text-[#007BFF] text-center">Meet Our Team</h2>
+        <div class="flex flex-wrap justify-center gap-8 mt-8">
+            <!-- Team Member 1 -->
+            <div class="bg-white shadow-lg rounded-lg p-4 text-center w-72">
+                <img src="{% static 'images/team1.jpeg' %}" alt="Team Member 1" class="h-48 w-48 mx-auto rounded-full">
+                <h3 class="text-xl font-semibold mt-4">John Doe</h3>
+                <p class="text-gray-600">Lead Technician</p>
+                <ul class="mt-2 text-gray-500 text-sm">
+                    <li>✔ 8+ years experience</li>
+                    <li>✔ Expert in POS repairs</li>
+                </ul>
+            </div>
+
+            <!-- Team Member 2 -->
+            <div class="bg-white shadow-lg rounded-lg p-4 text-center w-72">
+                <img src="{% static 'images/team2.jpeg' %}" alt="Team Member 2" class="h-48 w-48 mx-auto rounded-full">
+                <h3 class="text-xl font-semibold mt-4">Jane Smith</h3>
+                <p class="text-gray-600">Customer Support</p>
+                <ul class="mt-2 text-gray-500 text-sm">
+                    <li>✔ 5+ years experience</li>
+                    <li>✔ Excellent client service</li>
+                </ul>
+            </div>
+
+            <!-- Team Member 3 -->
+            <div class="bg-white shadow-lg rounded-lg p-4 text-center w-72">
+                <img src="{% static 'images/team3.jpeg' %}" alt="Team Member 3" class="h-48 w-48 mx-auto rounded-full">
+                <h3 class="text-xl font-semibold mt-4">Mark Wilson</h3>
+                <p class="text-gray-600">POS Installation Specialist</p>
+                <ul class="mt-2 text-gray-500 text-sm">
+                    <li>✔ 7+ years experience</li>
+                    <li>✔ Fast & precise installations</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+{% endblock %}

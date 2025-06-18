@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Test Tailwind{% endblock %}</title>
+    {% load static %}
+    <link href="{% static 'css/dist/styles.css' %}" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <nav class="bg-blue-500 text-white p-4">
+        <h1 class="text-2xl font-bold">Tailwind CSS Test</h1>
+    </nav>
+
+    <div class="container mx-auto p-4">
+        <div class="bg-white shadow-lg rounded-lg p-6">
+            <h2 class="text-2xl font-bold text-center text-blue-600">Tailwind CSS is Working!</h2>
+            <p class="text-gray-700 mt-2">If you see this message styled, Tailwind CSS is successfully integrated.</p>
+            <button class="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                Click Me!
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

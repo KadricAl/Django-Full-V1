@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Cancel Yearly Service{% endblock %}
+
+{% block content %}
+<div class="flex min-h-screen">
+    {% include "left_menu.html" %}
+
+    <main class="flex-1 p-6 bg-gray-100">
+        <div class="p-6 bg-white shadow rounded">
+            <h1 class="text-xl font-bold mb-4 text-red-600">Confirm Cancellation</h1>
+            <p class="mb-4">Are you sure you want to mark <strong>{{ device.device.type }}</strong> (Serial: <strong>{{ device.serial_number }}</strong>) as <span class="text-red-600 font-semibold">not serviced</span> for this year?</p>
+
+            <form method="POST" class="space-x-4">
+                {% csrf_token %}
+                <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">
+                    Yes, Cancel Service
+                </button>
+                <a href="{% url 'technician_next_services' %}" class="text-gray-700 hover:underline">No, Go Back</a>
+            </form>
+        </div>
+    </main>
+</div>
+{% endblock %}

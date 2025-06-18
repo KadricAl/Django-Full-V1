@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Register Client{% endblock %}
+
+{% block content %}
+<div class="max-w-xl mx-auto bg-white p-6 mt-6 rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">Register New Client</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class=" mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Register & Send Email</button>
+    </form>
+</div>
+{% endblock %}
